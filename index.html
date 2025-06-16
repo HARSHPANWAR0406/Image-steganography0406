@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Image Steganography</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="HARSHPANWAR0406" />
+    <meta name="description" content="Hide and retrieve messages in images using JavaScript." />
+
+    <link rel="icon" type="image/png" href="images/0406.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="backend/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="gradient-text">IMAGE STEGANOGRAPHY</h1>
+        <div id="description">Hide and retrieve secret messages in images - By HARSHPANWAR0406</div>
+
+        <!-- Mode Selector -->
+        <div class="mb-4 text-center">
+            <label for="mode" class="form-label text-warning fw-bold">Select Mode:</label>
+            <select id="mode" class="form-select w-50 mx-auto">
+                <option value="" selected disabled>-- Select Mode --</option>
+                <option value="encode">Encode (Hide Message)</option>
+                <option value="decode">Decode (Reveal Message)</option>
+            </select>
+        </div>
+
+        <!-- Main Content (hidden initially) -->
+        <div class="row d-none" id="mainContent">
+
+            <div class="col-md-4">
+                <h4>Choose Image:</h4>
+                <input type="file" id="file" />
+
+                <!-- Decode mode: Read button under file input -->
+                <div id="readSection" class="btns mt-3 d-none">
+                    <button id="read" class="btn btn-success">Read</button>
+                </div>
+            </div>
+
+            <!-- Encode mode: text area + hide button -->
+            <div class="col-md-8 d-none" id="textSection">
+                <h4>Secret Message:</h4>
+                <textarea id="text">Your secret message</textarea>
+                <div class="btns">
+                    <button id="hide" class="btn btn-warning">Hide</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Output -->
+        <div id="messageArea" class="invisible mt-4">
+            <h4 class="text-info">Decoded Message:</h4>
+            <div id="message"></div>
+            <button id="copy" onclick="copyText()" class="btn btn-outline-info mt-2">Copy Text</button>
+        </div>
+
+        <!-- Images -->
+        <div class="row mt-5 d-none" id="imagesSection">
+            <div class="col-md-6">
+                <h4>Original Image:</h4>
+                <div class="card">
+                    <img id="img" class="card-img" src="images/0406.png" alt="Original" />
+                </div>
+            </div>
+
+            <div class="col-md-6 d-none" id="stego">
+                <h4>Encoded Image:</h4>
+                <div class="card">
+                    <img id="cover" class="card-img" src="" alt="Encoded" />
+                </div>
+                <div class="text-center mt-3">
+                    <a id="download" class="btn btn-success" download="cover.png">Download Encoded Image</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<footer class="footer mt-5 text-center text-light">
+  <p>&copy; 2025 HARSHPANWAR0406. All rights reserved.</p>
+  <a href="https://github.com/HARSHPANWAR0406" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub Profile">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.007-.693-.01-1.36-2.23.48-2.7-1.08-2.7-1.08-.36-.91-.88-1.15-.88-1.15-.72-.49.055-.48.055-.48.8.056 1.22.82 1.22.82.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.96 0-.88.31-1.6.82-2.16-.082-.2-.36-1.02.077-2.12 0 0 .67-.215 2.2.82a7.6 7.6 0 012-.27c.68.003 1.36.092 2 .27 1.53-1.035 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.16 0 3.08-1.87 3.76-3.65 3.96.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.001 8.001 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  </a>
+</footer>
+
+
+    <script src="backend/scripts.js"></script>
+</body>
+</html>
